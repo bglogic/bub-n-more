@@ -1,6 +1,30 @@
-#include <Python.h>
+#include <Windows.h>
 
-extern int Py_Main(int argc, char **argv);
+/*extern int Py_Main(int argc, char **argv);*/
+
+typedef int (*py_main) (int, char**);
+
+static char* libnames[] = {
+	"Python23.dll",
+	"Python22.dll",
+	(char*) 0 };
+
+py_main get_py_main(void)
+{
+	char** p;
+	for (p=libnames; *p; p++) {
+		HINSTANCE lib = LoadLibrary(*p);
+		if (lib) {
+			FARPROC f = GetProcAddress(lib, "Py_Main");
+			if (f)
+				return (py_main) f;
+			FreeLibrary(lib);
+		}
+	}
+	MessageBox((HWND)0, "Cannot locate the Python DLL (Python23.dll, Python22.dll).",
+		(char*)0, MB_ICONERROR);
+	exit(1);
+}
 
 int main (int argc, char **argv)
 {
@@ -11,5 +35,5 @@ int main (int argc, char **argv)
 		argc = 2;
 		argv = my_argv;
 	}
-	return Py_Main(argc, argv);
+	return get_py_main()(argc, argv);
 }
