@@ -1,4 +1,4 @@
-CVS_CHECKOUT = ../../bub-n-bros
+CVS_CHECKOUT = ../dist/bub-n-bros
 BUBBOB = $(CVS_CHECKOUT)/bubbob
 DOC    = $(BUBBOB)/doc
 
@@ -9,9 +9,9 @@ all: clean htdocs-all
 FORCE:
 
 clean: FORCE
-	rm -fr htdocs/*
+	rm -fr htdocs/*.*
 
-htdocs-all: $(addprefix htdocs/,$(wildcard *.html images/*) crazybonuses.html)
+htdocs-all: $(addprefix htdocs/,$(wildcard *.html images/*.*) crazybonuses.html)
 
 htdocs/%: %
 	-mkdir -p $(dir $@)
