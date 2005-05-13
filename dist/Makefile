@@ -63,11 +63,20 @@ bubbros-$(VERSION)-win.zip bubbros-$(VERSION)-win-clientonly.zip:
 	cp -r $(CVS_CHECKOUT) winzip
 	rm -f winzip/BubBob.icns
 	cp ../Windows/BubBob.exe winzip/
+	cp ../Windows/statesaver23.pyd winzip/bubbob/statesaver.pyd
+	cp ../Windows/wingame23.pyd winzip/display/wingame.pyd
 	mkdir winzip/DLLs
 	(cd winzip/DLLs && unzip ../../../Windows/PythonBinaries.zip)
 	mv winzip/DLLs/python23.dll winzip/
 	mkdir winzip/Lib
 	cp $(addprefix $(PYTHONSOURCE),$(PYTHONLIBFILES)) winzip/Lib/
+	echo "#empty" > winzip/Lib/site.py
+	python unix2win.py `find winzip -name "*.txt"`
+	python unix2win.py `find winzip -name "*.py"`
+	python unix2win.py `find winzip -name "*.html"`
+	python unix2win.py `find winzip -name "*.java"`
+	python unix2win.py `find winzip -name "*.c"`
+	python unix2win.py winzip/bubbob/levels/rnglevel
 	(cd winzip && zip -r -9 ../bubbros-$(VERSION)-win.zip *)
 	rm -r winzip/bubbob
 	rm -r winzip/java
