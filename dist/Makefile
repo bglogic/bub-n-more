@@ -23,7 +23,7 @@ export: clean
 	cvs -z6 -d:ext:arigo@cvs.sourceforge.net:/cvsroot/bub-n-bros co -P bub-n-bros
 	rm -r `find $(CVS_CHECKOUT) -name CVS`
 	rm -r `find $(CVS_CHECKOUT) -name .cvsignore`
-	(cd $(CVS_CHECKOUT)/bubbob/images && python buildcolors.py -c)
+#	(cd $(CVS_CHECKOUT)/bubbob/images && python buildcolors.py -c)
 
 htmlpages: FORCE $(CVS_CHECKOUT)/doc/crazybonuses.html $(CVS_CHECKOUT)/doc/sshots.html
 	cp ../site/howto.html $(CVS_CHECKOUT)/doc/Introduction.html
@@ -37,7 +37,8 @@ $(CVS_CHECKOUT)/doc/%.html: FORCE
 	echo "You can <a href='http://bub-n-bros.sourceforge.net/$*.html'>find it on-line</a>." >> $@
 	echo "</body></html>" >> $@
 
-dist: $(DISTFILES) rmtmpfiles
+dist: $(DISTFILES)
+	make rmtmpfiles
 
 rmdist: FORCE
 	rm -f $(DISTFILES)
