@@ -6,7 +6,7 @@ PYTHONSOURCE = /usr/local/lib/python2.3/
 PYTHONLIBFILES = BaseHTTPServer.py ConfigParser.py SimpleHTTPServer.py SocketServer.py StringIO.py UserDict.py __future__.py atexit.py base64.py bdb.py cgi.py chunk.py cmd.py colorsys.py copy.py copy_reg.py dummy_thread.py fnmatch.py ftplib.py getopt.py getpass.py glob.py gopherlib.py gzip.py htmlentitydefs.py httplib.py linecache.py macpath.py macurl2path.py mimetools.py mimetypes.py new.py ntpath.py nturl2path.py os.py os2emxpath.py pdb.py popen2.py posixpath.py pprint.py profile.py pstats.py py_compile.py quopri.py random.py re.py repr.py rfc822.py shutil.py site.py socket.py sre.py sre_compile.py sre_constants.py sre_parse.py stat.py string.py tempfile.py threading.py traceback.py types.py urllib.py urlparse.py uu.py warnings.py wave.py weakref.py webbrowser.py zipfile.py
 
 
-all:
+all: export htmlpages dist
 
 FORCE:
 
@@ -19,12 +19,10 @@ rmtmpfiles: FORCE
 	rm -f bubbros-$(VERSION).tar bubbros-$(VERSION)-clientonly.tar
 	rm -fr winzip
 
-source: export htmlpages
-
 export: clean
 	cvs -z6 -d:ext:arigo@cvs.sourceforge.net:/cvsroot/bub-n-bros co -P bub-n-bros
-	rm -r "find $(CVS_CHECKOUT) -name CVS"
-	rm -r "find $(CVS_CHECKOUT) -name .cvsignore"
+	rm -r `find $(CVS_CHECKOUT) -name CVS`
+	rm -r `find $(CVS_CHECKOUT) -name .cvsignore`
 	(cd $(CVS_CHECKOUT)/bubbob/images && python buildcolors.py -c)
 
 htmlpages: FORCE $(CVS_CHECKOUT)/doc/crazybonuses.html $(CVS_CHECKOUT)/doc/sshots.html
@@ -62,6 +60,7 @@ bubbros-$(VERSION).tar bubbros-$(VERSION)-clientonly.tar:
 bubbros-$(VERSION)-win.zip bubbros-$(VERSION)-win-clientonly.zip:
 	rm -fr winzip
 	cp -r $(CVS_CHECKOUT) winzip
+	rm -f winzip/BubBob.icns
 	cp ../Windows/BubBob.exe winzip/
 	mkdir winzip/DLLs
 	(cd winzip/DLLs && unzip ../../../Windows/PythonBinaries.zip)
