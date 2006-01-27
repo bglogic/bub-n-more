@@ -1,5 +1,5 @@
 CVS_CHECKOUT = bub-n-bros
-VERSION = 1.4
+VERSION = 1.5
 DISTFILES = bubbros-$(VERSION)-clientonly.tar.gz bubbros-$(VERSION)-win-clientonly.zip bubbros-$(VERSION)-win.zip bubbros-$(VERSION).tar.gz bubbros-$(VERSION).tar.bz2
 
 PYTHONSOURCE = /usr/local/lib/python2.3/
