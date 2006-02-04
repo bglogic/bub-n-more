@@ -1,4 +1,4 @@
-CVS_CHECKOUT = ../dist/bub-n-bros
+CVS_CHECKOUT = /home/arigo/games
 BUBBOB = $(CVS_CHECKOUT)/bubbob
 DOC    = $(BUBBOB)/doc
 
