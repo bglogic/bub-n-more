@@ -1,4 +1,4 @@
-CVS_CHECKOUT = /home/arigo/games
+CVS_CHECKOUT = /home/arigo/octogone/games
 BUBBOB = $(CVS_CHECKOUT)/bubbob
 DOC    = $(BUBBOB)/doc
 

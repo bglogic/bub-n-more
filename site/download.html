@@ -36,9 +36,9 @@ That's it! If you want very slightly better graphics (translucent bubbles), you 
 
 <p><strong>Client-only:</strong> if you don't want to download the big (11.9MB) release for Windows and are only interested in connecting to a Bub &amp; Bros server that someone else started, you can get the smaller "client only" pack <code>bubbros-1.5-win-clientonly.zip</code> from the <a href="http://sourceforge.net/project/showfiles.php?group_id=72187">release</a>.  (This is only recommended if the connexion between you and the Bub &amp; Bros server is high-speed, because your client will download all the graphics and sound from the game server while playing.)</p>
 
-<p><strong>Bug:</strong> on Windows XP, it seems that Bub &amp; Bros does not work if installed in a path with spaces in it, like "<code>c:\documents and settings\someuser\Desktop\bubbros</code>".  Move it to a path like "<code>c:\games\bubbros</code>".</p>
+<p><strong>Bug (fixed after release 1.5):</strong> on Windows XP, it seems that Bub &amp; Bros does not work if installed in a path with spaces in it, like "<code>c:\documents and settings\someuser\Desktop\bubbros</code>".  Move it to a path like "<code>c:\games\bubbros</code>".</p>
 
-<p><strong>Bug:</strong> on machines that are not connected to a network, BubBob will not start, or (with luck) start very slowly.</p>
+<p><strong>Bug:</strong> on machines that are not connected to a network, BubBob might not start, or (with luck) start very slowly.</p>
 
 
 <br><hr><br><a name="mac">
@@ -60,6 +60,10 @@ You must only <a href="http://undefined.org/python/pimp/">install Pygame from he
 That's it!
 
 <p><strong>Client-only:</strong> if you don't want to download the big (11MB) release and the big (35MB) kitchensink and are only interested in connecting to a Bub &amp; Bros server that someone else started, you can get the tiny "client only" pack <code>bubbros-1.5-clientonly.zip</code> from the <a href="http://sourceforge.net/project/showfiles.php?group_id=72187">release</a>.  (This is only recommended if the connexion between you and the Bub &amp; Bros server is high-speed, because your client will download all the graphics and sound from the game server while playing.)</p>
+
+<p><strong>With custom Python/Pygame installation,</strong> you need to make sure that the Finder will open the correct version of Python to run the client.  The game uses the PythonLauncher to do that.  To check and fix which version of Python is run, type the following line in a terminal:</p>
+
+<p><pre>/usr/bin/open -a PythonLauncher</pre></p>
 
 
 <br><hr><br><a name="x">
