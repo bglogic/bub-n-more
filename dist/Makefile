@@ -20,7 +20,7 @@ rmtmpfiles: FORCE
 	rm -fr winzip
 
 export: clean
-	cvs -z6 -d:ext:arigo@cvs.sourceforge.net:/cvsroot/bub-n-bros co -P bub-n-bros
+	cvs -z6 -d:ext:arigo@bub-n-bros.cvs.sourceforge.net:/cvsroot/bub-n-bros co -P bub-n-bros
 	rm -r `find $(CVS_CHECKOUT) -name CVS`
 	rm -r `find $(CVS_CHECKOUT) -name .cvsignore`
 #	(cd $(CVS_CHECKOUT)/bubbob/images && python buildcolors.py -c)
