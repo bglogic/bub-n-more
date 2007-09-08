@@ -68,9 +68,9 @@ The client will run in <strong>any one</strong> of the following -- make sure yo
 <h2>Troubleshooting</h2>
 
 <ul>
-<li>If, before you can actually play, you are stuck at some point (where nothing occurs, no window opens,...) then you may be able to have a hint at what is going wrong by looking near the end of the log file, which is created under the name <code>BubBob.log</code> besides <code>BubBob.py</code>.  If you can't make sense of it feel free to send it to us (address below).
+<li>If, before you even try to join a game, you are stuck at some point (where nothing occurs, no window opens,...) then you may be able to have a hint at what is going wrong by looking near the end of the log file, which is created under the name <code>BubBob.log</code> besides <code>BubBob.py</code>, or under the name <code>bb.log</code> in the Windows Temp directory.  If you can't make sense of it feel free to send it to us (address below).
 
-<li>Firewalls and NAT systems can get in the way.  NAT systems are routers, common for example in ADSL setups, that allow a sub-network to use private IP addresses like <code>10.0.0.42</code>.  The various programs (client, server, meta-server) are doing their very best to connect to each other nonetheless.  If you cannot connect to a server, see next section.
+<li>Firewalls and NAT systems are the most common cause for preventing connexions with Internet servers.  NAT systems are routers, common for example in ADSL setups, that allow a sub-network to use private IP addresses like <code>192.168.1.2</code>.  The various programs (client, server, meta-server) are doing their very best to connect to each other nonetheless.  If you still cannot connect to a server, see next section.
 </ul>
 
 
@@ -107,13 +107,16 @@ where <code>servername:4321</code> is the full name of the server, and <code>123
 
 <br>
 
+<a name="meta">
 <p><strong>Meta-server connexions:</strong>
-Connexions using the meta-server (with the "Internet server page" from BubBob's main page) work generally better, as long as the server and the client can independently connect to the meta-server (which is at <code>codespeak.net</code> using TCP ports 8050 and 8055). Firewalls and routers generally allow this. The meta-server will then co-operate with the server and the client to synchronize their connexion. (The meta-server will not route game data between the server and the client, though.)</p>
+Connexions using the meta-server (with the "Internet server page" from BubBob's main page) work generally better than direct connexions, as long as the server and the client can independently connect to the meta-server (which is at <code>codespeak.net</code> using TCP ports 8050 and 8055). Firewalls and routers generally allow this. The meta-server will then co-operate with the server and the client to synchronize their connexion. (The meta-server will not route game data between the server and the client, though.)</p>
 
-<p>With the help of the meta-server, we have more techniques to try (in order):
+<p>This doesn't always work either, though.  If it does not, then you need to open a port on your side.  You have to configure your firewall and/or your NAT (e.g. your ADSL modem) to allow an incoming port.  In the NAT case, you have to say that communication arriving from outside at a TCP port of your choice (pick a number, say, between 8000 and 9999) should be sent to your computer (you have to enter its IP, as seen in the "network connexions" configuration).  You can then tell bub-n-bros to use this port: click on the Configuration link on the main page, scroll down to Network options, and enter the same port number in "Client incoming TCP port").</p>
+
+<p>More technically, with the help of the meta-server, the games tries the following (in order):
 <ol>
-<li>The client tries to connect to the server normally, as in local connexions.  It fails if the server cannot be reached through a firewall or router.  On the server, use "TCP game server port" to fix a specific port that you can let in.
-<li>The client (through the meta-server) asks the server to try to connect backwards to the client.  This fails if the client cannot be reached through a firewall or router.  On the client, use "Client incoming TCP port" to fix a specific port that you can let in.
+<li>The client tries to connect to the server normally, as in local connexions.  It fails if the server cannot be reached through a firewall or router.  To fix this, the person starting the server can open a TCP port and enter it in "TCP game server port" in the Configuration page.
+<li>The client (through the meta-server) asks the server to try to connect backwards to the client.  This fails if the client cannot be reached through a firewall or router.  On the client, use "Client incoming TCP port" to fix a specific port that you can let in, as described above.
 <li>They try to connect to each other using a technique known as simultaneous SYN exchanges.  In some cases it works even if both the client and the server are behind a firewall.  <i>This is not a way to hack through firewalls and break the security of a network, it is a perfectly official (if rarely used) way to connect two machines and it only works if the two machines are willing to actively connect to each other in the first place.</i>
 </ol>
 
