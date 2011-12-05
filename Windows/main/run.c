@@ -5,6 +5,10 @@
 typedef int (*py_main) (int, char**);
 
 static char* libnames[] = {
+        "Python27.dll",
+        "Python26.dll",
+        "Python25.dll",
+        "Python24.dll",
 	"Python23.dll",
 	"Python22.dll",
 	(char*) 0 };
@@ -21,7 +25,7 @@ py_main get_py_main(void)
 			FreeLibrary(lib);
 		}
 	}
-	MessageBox((HWND)0, "Cannot locate the Python DLL (Python23.dll, Python22.dll).",
+	MessageBox((HWND)0, "Cannot locate the Python DLL (Python2?.dll).",
 		(char*)0, MB_ICONERROR);
 	exit(1);
 }
