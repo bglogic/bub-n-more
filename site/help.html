@@ -21,7 +21,7 @@
 <br><hr><br><a name="levels">
 <h2>Make your own levels</h2>
 
-<p>Paxed has written an <a href="http://bilious.homelinux.org/~paxed/bnbedit/">online level editor</a>.  Build your levels on this web page, and save them locally in order to play them.  The level files should be stored in the <code>bubbob/levels</code> subdirectory.</p>
+<p>Paxed has written an online level editor, but it is down nowadays.  You could build your levels on this web page, and save them locally in order to play them.  The level files should be stored in the <code>bubbob/levels</code> subdirectory.</p>
 
 <p>If you are interested in editing the levels locally with a text editor, read on.  Level files come in two flavours: <code>.bin</code> and <code>.py</code>.  The former are MacBinary files from the <a href="http://www.mcsebi.de">original MacOS9 game</a>.  The latter are the levels that we did ourselves.  To make new levels directly with a text editor, copy for example <code>CompactLevels.py</code> to a new name, and open it with any text editor.  The structure should be fairly simple to understand even without knowledge about Python.  Just don't try to look at <code>RandomLevels.py</code> first <code>:-)</code></p>
 
@@ -109,7 +109,7 @@ where <code>servername:4321</code> is the full name of the server, and <code>123
 
 <a name="meta">
 <p><strong>Meta-server connexions:</strong>
-Connexions using the meta-server (with the "Internet server page" from BubBob's main page) work generally better than direct connexions, as long as the server and the client can independently connect to the meta-server (which is at <code>codespeak.net</code> using TCP ports 8050 and 8055). Firewalls and routers generally allow this. The meta-server will then co-operate with the server and the client to synchronize their connexion. (The meta-server will not route game data between the server and the client, though.)</p>
+Connexions using the meta-server (with the "Internet server page" from BubBob's main page) work generally better than direct connexions, as long as the server and the client can independently connect to the meta-server (which is at <code>ctpug.org.za</code> using TCP ports 8050 and 8055). Firewalls and routers generally allow this. The meta-server will then co-operate with the server and the client to synchronize their connexion. (The meta-server will not route game data between the server and the client, though.)</p>
 
 <p>This doesn't always work either, though.  If it does not, then you need to open a port on your side.  You have to configure your firewall and/or your NAT (e.g. your ADSL modem) to allow an incoming port.  In the NAT case, you have to say that communication arriving from outside at a TCP port of your choice (pick a number, say, between 8000 and 9999) should be sent to your computer (you have to enter its IP, as seen in the "network connexions" configuration).  You can then tell bub-n-bros to use this port: click on the Configuration link on the main page, scroll down to Network options, and enter the same port number in "Client incoming TCP port").</p>
 
